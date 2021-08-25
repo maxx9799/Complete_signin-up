@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <style>
+        a{
+            color:white;
+            font-family: 'Times New Roman', Times, serif;
+            font-size:x-large;
+        }
+
+        li{
+            display: inline-block;
+            padding: 100px;
+            
+        }
+
+        div{
+            background-color: black;
+            margin-top: 2%;
+        }
+
+        li:hover{
+            transform: scale(1.5);
+            color: tomato;
+        }
+    </style>    
+
+</head>
+<body style="background-color: gray;">
+    <div>
+        <ul>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/signin/">SIGNIN</a></li>
+            <li><a href="/details">Details</a></li>
+        </ul>
+    </div>
+
+    {% for d in data %}
+    <hr>
+    <h3>UID : {{d.pk}}</h3>
+    <h3>Name : {{d.username}}</h3>
+    <h3>Email : {{d.email}}</h3>
+    <h3>Address : {{d.address}}</h3>
+    
+    <a href="{% url 'users:edit' id=d.pk %}"><button type="submit">Edit</button></a>
+    <a href="{% url 'users:delete' id=d.pk %}"><button type="submit">Delete</button></a>
+
+    {% endfor %}
+
+</body>
+</html>
+<!-- 
+1.All User Detail except password will be shown in table
+2.There will be edit and delete option in every row.
+3.On Edit option a modal will be option where user details will be edited
+4.On delete user details will be deleted
+5.Logout option
+Note:- User authentication will be through JWT token and Session Should
+expire in 5 min.
+Please feel free to connect in case of any query. -->
+

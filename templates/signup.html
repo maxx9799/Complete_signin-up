@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        p{
+            color: honeydew;
+            font-size: 20px;
+            font-style: italic;
+            font-family: 'Times New Roman', Times, serif;
+
+        }
+
+        a{
+            color:white;
+            font-family: 'Times New Roman', Times, serif;
+            font-size:x-large;
+        }
+
+        li{
+            display: inline-block;
+            padding: 100px;
+            
+        }
+
+        div{
+            background-color: black;
+            margin-top: 2%;
+        }
+
+        li:hover{
+            transform: scale(1.5);
+            color: tomato;
+        }
+        
+    </style>
+
+</head>
+<body style="background-color: gray;">
+
+    <div>
+        <ul>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/signin/">SIGNIN</a></li>
+            <li><a href="/details">Details</a></li>
+        </ul>
+    </div>
+    
+    <h1>{{error}}</h1>
+    <form style="margin-top: 10%; margin-left:40%;" method="POST" action="/aftersignup/">
+        <!-- csrf_token : cross site verification token -->
+        {% csrf_token %} 
+        {{form.as_p}} 
+        <input style="text-align: center;" type="submit" value="Register"><br>
+        <p style="text-decoration: none;">If you already register then just <a href="/signin/">LOGIN</a> instead.</p>
+
+    </form>
+
+</body>
+</html>
+<!-- 
+accept for in 3 ways on html page:
+form.as_p
+form.as_table
+form.as_ul -->  
